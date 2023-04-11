@@ -16,8 +16,15 @@ class UserPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
+              InkWell(
+                onTap: () {},
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: const [Icon(Icons.report_problem_outlined)],
+                ),
+              ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               Center(
                 child: CircleAvatar(
@@ -27,18 +34,122 @@ class UserPage extends StatelessWidget {
                   child: Container(),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.all(10.0),
-                child: Text(
-                  'Name of the user',
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 19,
-                      fontWeight: FontWeight.bold),
+              Center(
+                child: const Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    'Name of the user',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 19,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               SizedBox(
                 height: 35,
+              ),
+              Row(
+                children: [
+                  // Two boxes one for fee due one for fee paid
+                  Expanded(
+                    child: Container(
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          Text(
+                            "Fee Due",
+                            style: const TextStyle(
+                                color: Colors.red,
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Rs. 5000",
+                            style: const TextStyle(
+                                color: Colors.red,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 80,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 3),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Fee Paid",
+                            style: const TextStyle(
+                                color: Colors.green,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Rs. 5000",
+                            style: const TextStyle(
+                                color: Colors.green,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+             const Align(
+                alignment: Alignment.bottomLeft,
+                child: const Text(
+                  "due date (For first year):- 12/12/2021",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
               ),
               customTextFeild(
                   hintText: "Room No",
@@ -54,6 +165,11 @@ class UserPage extends StatelessWidget {
               const SizedBox(
                 height: 12,
               ),
+              customTextFeild(
+                  hintText: "Parent",
+                  textEditingController: TextEditingController(),
+                  currentValue: "Revenue Colony, Anantapur",
+                  isEnabled: false),
             ],
           ),
         ),
