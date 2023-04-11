@@ -1,6 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:hostely/controllers/user.controller.dart';
+import 'package:hostely/views/home.view.dart';
+import 'package:hostely/views/splash.view.dart';
 import 'controllers/firebase/firebase.controller.dart';
 
 Future<void> main() async {
@@ -12,6 +16,7 @@ Future<void> main() async {
 
 void bindDependencies() {
   Get.put(FirebaseContorller());
+  Get.put(UserController());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,11 +25,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Flutter Demo',
+    return GetMaterialApp(
+        title: 'Happy Living',
+        builder: EasyLoading.init(),
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: Container());
+        home: SplashScreen());
   }
 }
