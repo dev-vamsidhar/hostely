@@ -4,6 +4,8 @@ const kColorPrimary = Color(0xff6574cf);
 const kColorScaffoldBg = Color(0xffEFF2FF);
 const kColorTextFieldFill = Color(0xffF7F9FC);
 
+const appName = "Happy living";
+
 /* 
 This is the custom text input fields which we have used to take input from the user.
 
@@ -13,24 +15,25 @@ Required parameters:
     on text field like validation, addting text to input field, clear text in text input field.
     3) isEnabled - If we want to enable or disable text input field.
 */
-
 class customTextFeild extends StatelessWidget {
   const customTextFeild(
       {super.key,
       required this.hintText,
       required this.textEditingController,
       required this.currentValue,
-      required this.isEnabled});
+      required this.isEnabled,
+      this.validation = false});
   final String hintText;
   final TextEditingController textEditingController;
   final bool isEnabled;
   final String? currentValue;
+  final bool validation;
 
   @override
   Widget build(BuildContext context) {
     textEditingController.text = currentValue.toString();
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 3),
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       child: TextField(
         controller: textEditingController,
         enabled: isEnabled,
@@ -39,20 +42,15 @@ class customTextFeild extends StatelessWidget {
             height: 2.5,
             color: isEnabled ? Colors.black : Colors.black),
         decoration: InputDecoration(
-          filled: true,
           fillColor: kColorTextFieldFill,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+              const EdgeInsets.symmetric(vertical: 3, horizontal: 5),
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: kColorPrimary, width: 2),
             borderRadius: BorderRadius.circular(5),
           ),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey, width: 0.05),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          border: OutlineInputBorder(
-            borderSide: const BorderSide(color: Colors.grey, width: 0.05),
+            borderSide: const BorderSide(color: Colors.grey, width: 1),
             borderRadius: BorderRadius.circular(5),
           ),
           label: Text(

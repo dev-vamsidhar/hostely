@@ -27,7 +27,8 @@ class LoginPage extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "Welcome back to MySpace",
+                  "Welcome back to\n$appName",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: kColorPrimary,
                       fontWeight: FontWeight.bold,

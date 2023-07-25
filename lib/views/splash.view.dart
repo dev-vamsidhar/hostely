@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hostely/controllers/user.controller.dart';
 import 'package:hostely/views/home.view.dart';
 
 import 'login.view.dart';
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (FirebaseAuth.instance.currentUser == null) {
       Get.offAll(LoginPage());
     } else {
-      Get.offAll(HomePage());
+      await UserController().handleNewUser();
     }
   }
 

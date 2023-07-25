@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:hostely/constants.dart';
 import 'package:hostely/controllers/user.controller.dart';
+import 'package:hostely/views/login.view.dart';
 import 'package:hostely/views/user.view.dart';
 
 import '../controllers/authentication.controller.dart';
@@ -20,15 +21,21 @@ class HomePage extends StatelessWidget {
           backgroundColor: kColorPrimary,
           actions: [
             IconButton(
+              icon: Icon(Icons.chat),
+              onPressed: () async {
+                await AuthenticationController().signOut();
+                Get.offAll(LoginPage());
+              },
+            ),
+            IconButton(
               icon: Icon(Icons.logout),
-              onPressed: () {
-                AuthenticationController().signOut();
+              onPressed: () async {
+                await AuthenticationController().signOut();
+                Get.offAll(LoginPage());
               },
             )
           ],
         ),
-        body: Get.find<UserController>().currentUserRole == "user"
-            ? UserPage()
-            : Container());
+        body: UserPage());
   }
 }

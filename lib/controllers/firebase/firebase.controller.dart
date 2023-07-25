@@ -73,4 +73,14 @@ class FirebaseContorller {
       return false;
     }
   }
+
+  Future<bool> hasDoc(
+      {required String collectionpath, required String docId}) async {
+    DocumentSnapshot<Map<String, dynamic>> doc = await FirebaseFirestore
+        .instance
+        .collection(collectionpath)
+        .doc(docId)
+        .get();
+    return doc.exists;
+  }
 }

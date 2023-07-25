@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   cloud_firestore: ^4.4.4
+  upi_payment_flutter: ^0.0.4
   firebase_core: ^2.7.1
   firebase_auth: ^4.2.10
   google_sign_in: ^6.0.1

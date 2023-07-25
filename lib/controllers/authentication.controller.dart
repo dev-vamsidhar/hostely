@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hostely/controllers/user.controller.dart';
@@ -16,8 +15,7 @@ class AuthenticationController {
       User? user = userCredential.user;
       if (user != null) {
         EasyLoading.dismiss();
-        await UserController().creteUser(email: email, password: password);
-     
+        await UserController().handleNewUser();
       } else {
         EasyLoading.show(status: 'Error');
       }
@@ -43,7 +41,7 @@ class AuthenticationController {
       User? user = userCredential.user;
       if (user != null) {
         EasyLoading.dismiss();
-        Get.offAll(HomePage());
+        await UserController().handleNewUser();
       } else {
         EasyLoading.show(status: 'Error');
       }

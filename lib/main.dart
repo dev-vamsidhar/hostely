@@ -16,7 +16,6 @@ Future<void> main() async {
 
 void bindDependencies() {
   Get.put(FirebaseContorller());
-  Get.put(UserController());
 }
 
 class MyApp extends StatelessWidget {

@@ -28,7 +28,8 @@ class SignUp extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "Create an account to MySpace",
+                  "Create an account to \nHappy living",
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                       color: kColorPrimary,
                       fontWeight: FontWeight.bold,
@@ -75,8 +76,7 @@ class SignUp extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child:
-                      Center(child: Text("Already have an account? Sign up")),
+                  child: Center(child: Text("Already have an account? Login")),
                 ),
               )
             ],
