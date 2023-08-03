@@ -49,6 +49,7 @@ class ProfilePage extends StatelessWidget {
                       phone: phone.text,
                       parentPhone: parentphone.text,
                       address: address.text,
+                      approved: false,
                       rollNo: rollNo.text));
                 } else {
                   EasyLoading.showInfo("Fill all feilds");

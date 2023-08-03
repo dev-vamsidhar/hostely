@@ -1,9 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
+import 'package:hostely/admin/views/admin.view.dart';
 import 'package:hostely/constants.dart';
-import 'package:hostely/controllers/user.controller.dart';
 import 'package:hostely/views/login.view.dart';
 import 'package:hostely/views/user.view.dart';
 
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Icon(Icons.logout),
+              icon: const Icon(Icons.logout),
               onPressed: () async {
                 await AuthenticationController().signOut();
                 Get.offAll(LoginPage());
@@ -36,6 +38,9 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-        body: UserPage());
+        body:
+            FirebaseAuth.instance.currentUser!.email == "admin@happyliving.com"
+                ? AdminHomePage()
+                : UserPage());
   }
 }

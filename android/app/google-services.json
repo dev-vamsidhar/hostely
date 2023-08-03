@@ -29,6 +29,13 @@
             {
               "client_id": "39800414771-2ds29vsj8acaqev9bk5pooigs6aquebj.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "39800414771-tkdnva8q8ndcp361gf8ealsil0gcrrj0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.vamsidhar.hostely"
+              }
             }
           ]
         }

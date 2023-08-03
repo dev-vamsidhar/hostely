@@ -60,8 +60,6 @@ class UserController extends GetxController {
     EasyLoading.dismiss();
   }
 
-  Future deleteUser() async {}
-
   Future editUser() async {}
 
   Future paidRent(int amount) async {

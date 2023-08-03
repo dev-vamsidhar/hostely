@@ -20,18 +20,20 @@ class FirebaseContorller {
 
   Future<List<QueryDocumentSnapshot<Map<String, dynamic>>>> getallDocuments(
       {required String collectionPath,
-      String isEqualTo = "",
+      Object isEqualTo = "",
       String feild = ""}) async {
     print("Fetching data from $collectionPath");
     if (FirebaseAuth.instance.currentUser == null) {
       return [];
     }
+
     QuerySnapshot<Map<String, dynamic>> snapshot = feild.isEmpty
         ? await FirebaseFirestore.instance.collection(collectionPath).get()
         : await FirebaseFirestore.instance
             .collection(collectionPath)
-            .where("field", isEqualTo: feild)
+            .where("approved", isEqualTo: false)
             .get();
+
     return snapshot.docs;
   }
 

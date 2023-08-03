@@ -19,6 +19,7 @@ class UserModel {
   String roomNo;
   String rollNo;
   String paidAmount;
+  bool approved;
   String year;
 
   UserModel({
@@ -28,6 +29,7 @@ class UserModel {
     required this.phone,
     required this.parentPhone,
     required this.address,
+    required this.approved,
     this.rent = "0",
     this.roomNo = "",
     this.paidAmount = "0",
@@ -36,16 +38,17 @@ class UserModel {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        name: json["name"],
-        aadhar: json["aadhar"],
-        photo: json["photo"],
-        phone: json["phone"],
-        parentPhone: json["parentPhone"],
-        address: json["address"],
-        rent: json["rent"],
-        roomNo: json["roomNo"],
-        rollNo: json["rollNo"],
-      );
+      name: json["name"],
+      aadhar: json["aadhar"],
+      photo: json["photo"],
+      phone: json["phone"],
+      parentPhone: json["parentPhone"],
+      address: json["address"],
+      rent: json["rent"],
+      paidAmount: json['paidAmount'],
+      roomNo: json["roomNo"],
+      rollNo: json["rollNo"],
+      approved: json["approved"]);
 
   Map<String, dynamic> toJson() => {
         "name": name,
@@ -55,6 +58,8 @@ class UserModel {
         "parentPhone": parentPhone,
         "address": address,
         "rent": rent,
+        "paidAmount":paidAmount,
+        "approved": approved,
         "roomNo": roomNo,
         "rollNo": rollNo,
       };
