@@ -7,8 +7,8 @@ import 'package:hostely/models/user.model.dart';
 class AdminController extends GetxController {
   @override
   void onInit() {
-    // TODO: implement onInit
     getNonApprovedUsers();
+    getAllusers();
     super.onInit();
   }
 
@@ -18,8 +18,10 @@ class AdminController extends GetxController {
   List<String> unApprovedIds = [];
 
   Future getAllusers() async {
+    roomMappings = {};
     List<QueryDocumentSnapshot<Map<String, dynamic>>> users =
-        await FirebaseContorller().getallDocuments(collectionPath: "users");
+        await FirebaseContorller().getallDocuments(
+            collectionPath: "users", isEqualTo: true, feild: "approved");
     for (var i = 0; i < users.length; i++) {
       UserModel user = UserModel.fromJson(users[i].data());
       if (user.roomNo.isNotEmpty) {

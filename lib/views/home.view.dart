@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hostely/admin/views/admin.view.dart';
 import 'package:hostely/constants.dart';
@@ -19,14 +17,16 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         backgroundColor: kColorScaffoldBg,
         appBar: AppBar(
-          title: Text("My Space"),
+          title: const Text("My Space"),
           backgroundColor: kColorPrimary,
           actions: [
             IconButton(
-              icon: Icon(Icons.chat),
+              icon: const Icon(Icons.chat),
               onPressed: () async {
-                await AuthenticationController().signOut();
-                Get.offAll(LoginPage());
+                EasyLoading.showToast("Message still pending...",
+                    toastPosition: EasyLoadingToastPosition.bottom);
+                // await AuthenticationController().signOut();
+                // Get.offAll(LoginPage());
               },
             ),
             IconButton(
@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
           ],
         ),
         body:
-            FirebaseAuth.instance.currentUser!.email == "admin@happyliving.com"
+            FirebaseAuth.instance.currentUser!.email != "admin@happyliving.com"
                 ? AdminHomePage()
                 : UserPage());
   }

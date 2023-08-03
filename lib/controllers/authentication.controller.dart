@@ -22,13 +22,17 @@ class AuthenticationController {
     } on FirebaseAuthException catch (e) {
       EasyLoading.dismiss();
       if (e.code == 'weak-password') {
+        EasyLoading.showError("Password is too weak enter long password");
         print('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
+        EasyLoading.showError("Email already in use");
         print('The account already exists for that email.');
       } else if (e.code == 'invalid-email') {
+        EasyLoading.showError("Invalid email");
         print('The email is invalid');
       }
     } catch (e) {
+      EasyLoading.showError("Something went wrong");
       print(e);
     }
   }

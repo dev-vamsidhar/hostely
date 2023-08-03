@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:hostely/constants.dart';
+import 'package:hostely/controllers/firebase/firebase.controller.dart';
 import 'package:hostely/controllers/payments.controll.dart';
 import 'package:hostely/controllers/user.controller.dart';
 
@@ -176,7 +178,56 @@ class UserPage extends StatelessWidget {
                   backgroundColor: kColorPrimary,
                 ),
                 onPressed: () {
-                  PaymentController().payRent(amount: 100);
+                  TextEditingController amount = TextEditingController();
+                  String paymentText = "Pay";
+                  Get.defaultDialog(
+                      title: "Payment confimation",
+                      content: Column(
+                        children: [
+                          Text("Amount want to be pay"),
+                          customTextFeild(
+                              hintText: "Amount",
+                              textEditingController: amount,
+                              currentValue: "",
+                              isEnabled: true),
+                          InkWell(
+                            onTap: () async {
+                              PaymentController().payRent(amount: amount.text);
+                              if (paymentText == "Paid (press after sucess)") {
+                                await PaymentController()
+                                    .reduceRentagainstPayment(amount.text,
+                                        userController.userData.paidAmount);
+                                await userController.getUser();
+                                Get.back();
+                                EasyLoading.showToast(
+                                    "Approval sent to owner he will contact and update it",
+                                    toastPosition:
+                                        EasyLoadingToastPosition.bottom);
+                              }
+                              paymentText = "Paid (press after sucess)";
+                              userController.update();
+                            },
+                            child: GetBuilder<UserController>(builder: (_) {
+                              return Container(
+                                height: 50,
+                                width: double.infinity,
+                                child: Center(
+                                  child: Text(
+                                    paymentText,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18),
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.green),
+                              );
+                            }),
+                          )
+                        ],
+                      ));
                 },
                 child: const Text("Pay Rent"),
               ),

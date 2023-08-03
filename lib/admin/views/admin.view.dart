@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hostely/admin/controllers/adminController.dart';
 import 'package:hostely/admin/views/adminApproval.view.dart';
 import 'package:hostely/admin/views/allStudentsView.view.dart';
+import 'package:hostely/admin/views/paymentsApprovals.view.dart';
 
 class AdminHomePage extends StatelessWidget {
   AdminHomePage({super.key});
@@ -67,6 +68,39 @@ class AdminHomePage extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           "All Students",
+                          style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Icon(Icons.arrow_forward_ios)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                // Get.to(AllStudents());
+                Get.to(PaymentApprovals());
+              },
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 70,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const []),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          "Payments",
                           style: TextStyle(
                               fontSize: 17,
                               color: Colors.black,

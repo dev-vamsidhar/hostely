@@ -31,7 +31,7 @@ class FirebaseContorller {
         ? await FirebaseFirestore.instance.collection(collectionPath).get()
         : await FirebaseFirestore.instance
             .collection(collectionPath)
-            .where("approved", isEqualTo: false)
+            .where(feild, isEqualTo: isEqualTo)
             .get();
 
     return snapshot.docs;

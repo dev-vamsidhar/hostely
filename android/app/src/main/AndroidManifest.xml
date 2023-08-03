@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vamsidhar.hostely">
+    
    <application
         android:label="Happy Living"
         android:name="${applicationName}"

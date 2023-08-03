@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   cloud_firestore: ^4.4.4
   upi_payment_flutter: ^0.0.4
+  flutter_upi_pay: 0.0.2
   firebase_core: ^2.15.0
   firebase_auth: ^4.2.10
   google_sign_in: ^6.0.1
@@ -44,6 +45,7 @@ dependencies:
   share_plus: ^6.3.1
   file_picker: ^5.2.6
   upi_india: ^3.0.1
+  url_launcher: ^6.1.12
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
